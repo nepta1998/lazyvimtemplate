@@ -2,6 +2,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      auformat = false,
       servers = {
         basedpyright = {
           before_init = function(_, c)
