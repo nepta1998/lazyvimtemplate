@@ -12,6 +12,7 @@ return {
       -- Usamos la extensión externa en lugar del builtin antiguo
       require("none-ls.diagnostics.flake8"),
       nls.builtins.formatting.black,
+      nls.builtins.formatting.isort,
     })
   end,
 }
