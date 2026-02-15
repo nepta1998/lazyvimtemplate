@@ -17,6 +17,7 @@ return {
             basedpyright = {
               analysis = {
                 typeCheckingMode = "standard", -- other options include "off", "basic", and "strict"
+                diagnosticMode = "openFilesOnly",
                 autoImportCompletions = true,
                 diagnosticSeverityOverrides = {
                   reportUnusedImport = "information",
