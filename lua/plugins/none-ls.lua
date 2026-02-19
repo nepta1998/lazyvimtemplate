@@ -14,5 +14,11 @@ return {
       nls.builtins.formatting.black,
       nls.builtins.formatting.isort,
     })
+    if opts.sources then
+      -- Filtramos las fuentes para eliminar fish_indent y fish (diagnostics)
+      opts.sources = vim.tbl_filter(function(source)
+        return not (source.name:find("fish"))
+      end, opts.sources)
+    end
   end,
 }
