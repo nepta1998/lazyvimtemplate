@@ -19,6 +19,8 @@ return {
                 typeCheckingMode = "standard", -- other options include "off", "basic", and "strict"
                 diagnosticMode = "openFilesOnly",
                 autoImportCompletions = true,
+                useLibraryCodeForTypes = true,
+                autoSearchPaths = true,
                 diagnosticSeverityOverrides = {
                   reportUnusedImport = "information",
                   reportUnusedFunction = "information",
