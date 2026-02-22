@@ -12,6 +12,7 @@ return {
       { "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Toggle Horizontal Terminal" },
       -- Example: Overwrite default toggle key (e.g., to <C-/>)
       { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" },
+      { "<A-t>", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal", mode = { "t" } },
     },
   },
 }
