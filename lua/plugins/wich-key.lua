@@ -8,6 +8,7 @@ return {
         { "<leader>2", group = "Gemini", icon = "🔮", mode = { "n", "v" } },
         { "<leader>3", group = "Codex", icon = "🔮", mode = { "n", "v" } },
         { "<leader>t", group = "Terminal", icon = "📜", mode = { "n", "v" } },
+        { "<leader>4", group = "Test", icon = "🧪" },
       })
     end,
   },
