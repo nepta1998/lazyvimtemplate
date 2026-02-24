@@ -109,6 +109,16 @@ return {
 
         -- Para los límites de las ventanas (separadores verticales)
         WinSeparator = { bg = "none", fg = "#54546D" },
+        -- Forzar transparencia en la terminal integrada
+        Terminal = { bg = "none" },
+        -- Si usas ToggleTerm (muy común), estos grupos son clave:
+        ToggleTermNormal = { bg = "none" },
+        ToggleTermNormalNC = { bg = "none" }, -- Para cuando la terminal no tiene el foco
+        ToggleTermBorder = { bg = "none" }, -- Si usas bordes en la terminal flotante
+        -- Grupos específicos para el panel de OpenCode
+        OpenCodeNormal = { bg = "none" },
+        OpenCodeBorder = { bg = "none" },
+        OpenCodeFloating = { bg = "none" },
       },
     },
   },
