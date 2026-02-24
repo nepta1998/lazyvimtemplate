@@ -14,5 +14,5 @@ if vim.fn.executable("zsh") == 1 then
 else
   vim.opt.shell = "/bin/bash" -- Fallback de seguridad
 end
-vim.opt.pumblend = 0
 vim.opt.winblend = 0
+vim.opt.pumblend = 0
