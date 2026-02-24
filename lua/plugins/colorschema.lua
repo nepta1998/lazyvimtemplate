@@ -23,6 +23,10 @@ return {
         IlluminatedWordText = { bg = "none", underline = true },
         IlluminatedWordRead = { bg = "none", underline = true },
         IlluminatedWordWrite = { bg = "none", underline = true },
+        NormalFloat = { bg = "none" }, -- All floating buffers background like the lsp, autocomplete and such
+        FloatBorder = { bg = "none" }, -- Most floating borders except telescope
+        TelescopeBorder = { bg = "none" },
+        PopMenu = { bg = "none", blend = 0 },
 
         -- SnacksExplorerNormal = { bg = "none", underline = true },
         -- NormalFloat = { bg = "none", underline = true },
