@@ -70,6 +70,45 @@ return {
 
         -- Bordes y fondo de sugerencias de firmas de LSP
         LspSignatureActiveParameter = { bg = "none", bold = true, underline = true },
+
+        -- Render Markdown: Encabezados transparentes
+        Conceal = { bg = "none" },
+        RenderMarkdownH1Bg = { bg = "none" },
+        RenderMarkdownH2Bg = { bg = "none" },
+        RenderMarkdownH3Bg = { bg = "none" },
+        RenderMarkdownH4Bg = { bg = "none" },
+        RenderMarkdownH5Bg = { bg = "none" },
+        RenderMarkdownH6Bg = { bg = "none" },
+
+        -- Render Markdown: Bloques de código y otros elementos
+        RenderMarkdownCode = { bg = "none" }, -- Fondo de bloques de código
+        RenderMarkdownCodeInline = { bg = "none" }, -- Fondo de código inline `like this`
+        RenderMarkdownBullet = { bg = "none" },
+        RenderMarkdownTableHead = { bg = "none" },
+        RenderMarkdownTableRow = { bg = "none" },
+
+        -- Si el plugin usa los grupos estándar de Treesitter
+        ["@markup.heading.1.markdown"] = { bg = "none" },
+        ["@markup.heading.2.markdown"] = { bg = "none" },
+        ["@markup.raw.block.markdown"] = { bg = "none" },
+        -- Neovim usa ColorColumn para resaltar bloques de código a veces
+        ColorColumn = { bg = "none" },
+
+        -- Grupos de Treesitter para Markdown
+        ["@markup.raw.markdown_inline"] = { bg = "none" },
+
+        -- Limpiar el fondo de los delimitadores (las comillas ```)
+        ["@markup.fenced_code_block"] = { bg = "none" },
+
+        Whitespace = { bg = "none" },
+        -- Hace que la línea del cursor sea transparente
+        CursorLine = { bg = "none" },
+
+        -- Si quieres que el número de la línea resalte pero el fondo no:
+        -- CursorLineNr = { fg = "#7E9CD8", bold = true }, -- Ajusta el color a tu gusto
+
+        -- Para los límites de las ventanas (separadores verticales)
+        WinSeparator = { bg = "none", fg = "#54546D" },
       },
     },
   },
