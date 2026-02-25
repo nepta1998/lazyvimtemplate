@@ -16,3 +16,6 @@ else
 end
 vim.opt.winblend = 0
 vim.opt.pumblend = 0
+-- Spell-checking
+vim.opt.spell = true -- activa spell checker
+vim.opt.spelllang = { "en" }
