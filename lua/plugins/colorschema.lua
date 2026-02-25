@@ -17,7 +17,7 @@ return {
         LspReferenceWrite = { bg = "none", underline = true },
 
         -- Resaltado de búsqueda (estos ya los tienes, asegúrate que no tengan conflictos)
-        Search = { bg = "none" },
+        -- Search = { bg = "none" },
         CurSearch = { bg = "none" },
 
         IlluminatedWordText = { bg = "none", underline = true },
