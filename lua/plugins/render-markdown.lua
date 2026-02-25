@@ -7,7 +7,18 @@ return {
   ---@type render.md.UserConfig
   opts = {
     heading = {
+      enabled = true,
+      sign = true,
+      style = "full",
+      icons = { "① ", "② ", "③ ", "④ ", "⑤ ", "⑥ " },
+      left_pad = 1,
       backgrounds = { "none", "none", "none", "none", "none", "none" },
+    },
+    bullet = {
+      enabled = true,
+      icons = { "●", "○", "◆", "◇" },
+      right_pad = 1,
+      highlight = "render-markdownBullet",
     },
     code = {
       style = "language", -- 'language' suele ser más limpio que 'full' para transparencia

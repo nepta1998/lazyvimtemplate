@@ -1,134 +1,254 @@
 return {
-  -- add gruvbox
-  { "rebelot/kanagawa.nvim" },
   {
-    "Gentleman-Programming/gentleman-kanagawa-blur",
-    name = "gentleman-kanagawa-blur",
-    priority = 1000,
-    opts = {
-      -- variant = "sakura_night_blur",
-      -- styles = {
-      --   booleans = { italic = true, bold = true },
-      -- },
-      highlight_overrides = {
-        -- Cambia el valor de bg a "none" para que sea transparente
-        LspReferenceText = { bg = "none", underline = true },
-        LspReferenceRead = { bg = "none", underline = true },
-        LspReferenceWrite = { bg = "none", underline = true },
-
-        -- Resaltado de búsqueda (estos ya los tienes, asegúrate que no tengan conflictos)
-        -- Search = { bg = "none" },
-        CurSearch = { bg = "none" },
-
-        IlluminatedWordText = { bg = "none", underline = true },
-        IlluminatedWordRead = { bg = "none", underline = true },
-        IlluminatedWordWrite = { bg = "none", underline = true },
-        TelescopeBorder = { bg = "none" },
-        PopMenu = { bg = "none", blend = 0 },
-
-        NormalFloat = { bg = "none" },
-        FloatBorder = { bg = "none" },
-        Normal = { bg = "none" },
-        EndOfBuffer = { bg = "none" },
-        NormalNC = { bg = "none" }, -- Importante: Ventanas no enfocadas
-        StatusLine = { bg = "none" },
-        StatusLineNC = { bg = "none" },
-        MsgArea = { bg = "none" },
-        SignColumn = { bg = "none" },
-        FoldColumn = { bg = "none" },
-        WinBar = { bg = "none" },
-        WinBarNC = { bg = "none" },
-        -- Snacks Picker & Explorer (Solución para el fondo opaco)SnacksPicker = { bg = "none" },
-        SnacksPickerNormal = { bg = "none" },
-        SnacksPickerList = { bg = "none" },
-        SnacksPickerInput = { bg = "none" },
-        SnacksPickerPrompt = { bg = "none" },
-        SnacksPickerBorder = { bg = "none" },
-        SnacksPickerTitle = { bg = "none" },
-
-        -- Snacks Explorer (Sidebar)
-        SnacksExplorerNormal = { bg = "none" },
-        SnacksExplorerNormalNC = { bg = "none" },
-
-        -- Otros elementos de Snacks (Notifier, etc)
-        SnacksNormal = { bg = "none" },
-        SnacksNormalNC = { bg = "none" },
-
-        -- ESTOS SON PARA LAS SUGERENCIAS (nvim-cmp / PUM)
-        Pmenu = { bg = "none" }, -- Fondo del menú de sugerencias
-        PmenuSel = { bg = "#2D4F67" }, -- Color de la sugerencia seleccionada (cámbialo si quieres)
-        PmenuSbar = { bg = "none" }, -- Barra de desplazamiento
-        PmenuThumb = { bg = "none" }, -- El "pulgar" de la barra de desplazamiento
-
-        -- Para las descripciones flotantes de LSP (documentación de sugerencias)
-        CmpDoc = { bg = "none" },
-        CmpDocBorder = { bg = "none" },
-
-        -- Si usas Snacks.nvim para notificaciones o sugerencias
-        SnacksNotifier = { bg = "none" },
-        SnacksNotifierBorder = { bg = "none" },
-
-        -- Bordes y fondo de sugerencias de firmas de LSP
-        LspSignatureActiveParameter = { bg = "none", bold = true, underline = true },
-
-        -- Render Markdown: Encabezados transparentes
-        Conceal = { bg = "none" },
-        RenderMarkdownH1Bg = { bg = "none" },
-        RenderMarkdownH2Bg = { bg = "none" },
-        RenderMarkdownH3Bg = { bg = "none" },
-        RenderMarkdownH4Bg = { bg = "none" },
-        RenderMarkdownH5Bg = { bg = "none" },
-        RenderMarkdownH6Bg = { bg = "none" },
-
-        -- Render Markdown: Bloques de código y otros elementos
-        RenderMarkdownCode = { bg = "none" }, -- Fondo de bloques de código
-        RenderMarkdownCodeInline = { bg = "none" }, -- Fondo de código inline `like this`
-        RenderMarkdownBullet = { bg = "none" },
-        RenderMarkdownTableHead = { bg = "none" },
-        RenderMarkdownTableRow = { bg = "none" },
-
-        -- Si el plugin usa los grupos estándar de Treesitter
-        ["@markup.heading.1.markdown"] = { bg = "none" },
-        ["@markup.heading.2.markdown"] = { bg = "none" },
-        ["@markup.raw.block.markdown"] = { bg = "none" },
-        -- Neovim usa ColorColumn para resaltar bloques de código a veces
-        ColorColumn = { bg = "none" },
-
-        -- Grupos de Treesitter para Markdown
-        ["@markup.raw.markdown_inline"] = { bg = "none" },
-
-        -- Limpiar el fondo de los delimitadores (las comillas ```)
-        ["@markup.fenced_code_block"] = { bg = "none" },
-
-        Whitespace = { bg = "none" },
-        -- Hace que la línea del cursor sea transparente
-        CursorLine = { bg = "none" },
-
-        -- Si quieres que el número de la línea resalte pero el fondo no:
-        -- CursorLineNr = { fg = "#7E9CD8", bold = true }, -- Ajusta el color a tu gusto
-
-        -- Para los límites de las ventanas (separadores verticales)
-        WinSeparator = { bg = "none", fg = "#54546D" },
-        -- Forzar transparencia en la terminal integrada
-        Terminal = { bg = "none" },
-        -- Si usas ToggleTerm (muy común), estos grupos son clave:
-        ToggleTermNormal = { bg = "none" },
-        ToggleTermNormalNC = { bg = "none" }, -- Para cuando la terminal no tiene el foco
-        ToggleTermBorder = { bg = "none" }, -- Si usas bordes en la terminal flotante
-        -- Grupos específicos para el panel de OpenCode
-        OpenCodeNormal = { bg = "none" },
-        OpenCodeBorder = { bg = "none" },
-        OpenCodeFloating = { bg = "none" },
+    -- {
+    --   "xiyaowong/transparent.nvim",
+    --   config = function()
+    --     require("transparent").setup({
+    --       extra_groups = { -- table/string: additional groups that should be cleared
+    --         "Normal",
+    --         "NormalNC",
+    --         "Comment",
+    --         "Constant",
+    --         "Special",
+    --         "Identifier",
+    --         "Statement",
+    --         "PreProc",
+    --         "Type",
+    --         "Underlined",
+    --         "Todo",
+    --         "String",
+    --         "Function",
+    --         "Conditional",
+    --         "Repeat",
+    --         "Operator",
+    --         "Structure",
+    --         "LineNr",
+    --         "NonText",
+    --         "SignColumn",
+    --         "CursorLineNr",
+    --         "EndOfBuffer",
+    --       },
+    --       exclude_groups = {}, -- table: groups you don't want to clear
+    --     })
+    --   end,
+    -- },
+    {
+      "catppuccin/nvim",
+      name = "catppuccin",
+      priority = 1000,
+      opts = {
+        flavour = "mocha", -- latte, frappe, macchiato, mocha
+        transparent_background = true, -- disables setting the background color.
+        term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
+      },
+    },
+    {
+      "Gentleman-Programming/gentleman-kanagawa-blur",
+      name = "gentleman-kanagawa-blur",
+      priority = 1000,
+      opts = {
+        highlight_overrides = {
+          IlluminatedWordText = { bg = "none", underline = true },
+          IlluminatedWordRead = { bg = "none", underline = true },
+          IlluminatedWordWrite = { bg = "none", underline = true },
+        },
+      },
+    },
+    {
+      "Alan-TheGentleman/oldworld.nvim",
+      lazy = false,
+      priority = 1000,
+      opts = {},
+    },
+    {
+      "rebelot/kanagawa.nvim",
+      priority = 1000,
+      lazy = true,
+      config = function()
+        require("kanagawa").setup({
+          compile = false, -- enable compiling the colorscheme
+          undercurl = true, -- enable undercurls
+          commentStyle = { italic = true },
+          functionStyle = {},
+          keywordStyle = { italic = true },
+          statementStyle = { bold = true },
+          typeStyle = {},
+          transparent = true, -- do not set background color
+          dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+          terminalColors = true, -- define vim.g.terminal_color_{0,17}
+          colors = { -- add/modify theme and palette colors
+            palette = {},
+            theme = {
+              wave = {},
+              lotus = {},
+              dragon = {},
+              all = {
+                ui = {
+                  bg_gutter = "none", -- set bg color for normal background
+                  bg_sidebar = "none", -- set bg color for sidebar like nvim-tree
+                  bg_float = "none", -- set bg color for floating windows
+                },
+              },
+            },
+          },
+          overrides = function(colors) -- add/modify highlights
+            return {
+              LineNr = { bg = "none" },
+              NormalFloat = { bg = "none" },
+              FloatBorder = { bg = "none" },
+              FloatTitle = { bg = "none" },
+              TelescopeNormal = { bg = "none" },
+              TelescopeBorder = { bg = "none" },
+              LspInfoBorder = { bg = "none" },
+            }
+          end,
+          theme = "wave", -- Load "wave" theme
+          background = { -- map the value of 'background' option to a theme
+            dark = "wave", -- try "dragon" !
+            light = "lotus",
+          },
+        })
+      end,
+    },
+    {
+      "LazyVim/LazyVim",
+      opts = {
+        colorscheme = "gentleman-kanagawa-blur",
       },
     },
   },
-
-  -- Configure LazyVim to load gruvbox
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      -- colorscheme = "kanagawa-dragon", -- kanagawa, kanagawa-wave, kanagawa-dragon, kanagawa-lotus
-      colorscheme = "gentleman-kanagawa-blur",
-    },
-  },
 }
+-- return {
+--   -- add gruvbox
+--   { "rebelot/kanagawa.nvim" },
+--   {
+--     "Gentleman-Programming/gentleman-kanagawa-blur",
+--     name = "gentleman-kanagawa-blur",
+--     priority = 1000,
+--     opts = {
+--       -- variant = "sakura_night_blur",
+--       -- styles = {
+--       --   booleans = { italic = true, bold = true },
+--       -- },
+--       highlight_overrides = {
+--         -- Cambia el valor de bg a "none" para que sea transparente
+--         LspReferenceText = { bg = "none", underline = true },
+--         LspReferenceRead = { bg = "none", underline = true },
+--         LspReferenceWrite = { bg = "none", underline = true },
+--
+--         -- Resaltado de búsqueda (estos ya los tienes, asegúrate que no tengan conflictos)
+--         -- Search = { bg = "none" },
+--         CurSearch = { bg = "none" },
+--
+--         IlluminatedWordText = { bg = "none", underline = true },
+--         IlluminatedWordRead = { bg = "none", underline = true },
+--         IlluminatedWordWrite = { bg = "none", underline = true },
+--         TelescopeBorder = { bg = "none" },
+--         PopMenu = { bg = "none", blend = 0 },
+--
+--         NormalFloat = { bg = "none" },
+--         FloatBorder = { bg = "none" },
+--         Normal = { bg = "none" },
+--         EndOfBuffer = { bg = "none" },
+--         NormalNC = { bg = "none" }, -- Importante: Ventanas no enfocadas
+--         StatusLine = { bg = "none" },
+--         StatusLineNC = { bg = "none" },
+--         MsgArea = { bg = "none" },
+--         SignColumn = { bg = "none" },
+--         FoldColumn = { bg = "none" },
+--         WinBar = { bg = "none" },
+--         WinBarNC = { bg = "none" },
+--         -- Snacks Picker & Explorer (Solución para el fondo opaco)SnacksPicker = { bg = "none" },
+--         SnacksPickerNormal = { bg = "none" },
+--         SnacksPickerList = { bg = "none" },
+--         SnacksPickerInput = { bg = "none" },
+--         SnacksPickerPrompt = { bg = "none" },
+--         SnacksPickerBorder = { bg = "none" },
+--         SnacksPickerTitle = { bg = "none" },
+--
+--         -- Snacks Explorer (Sidebar)
+--         SnacksExplorerNormal = { bg = "none" },
+--         SnacksExplorerNormalNC = { bg = "none" },
+--
+--         -- Otros elementos de Snacks (Notifier, etc)
+--         SnacksNormal = { bg = "none" },
+--         SnacksNormalNC = { bg = "none" },
+--
+--         -- ESTOS SON PARA LAS SUGERENCIAS (nvim-cmp / PUM)
+--         Pmenu = { bg = "none" }, -- Fondo del menú de sugerencias
+--         PmenuSel = { bg = "#2D4F67" }, -- Color de la sugerencia seleccionada (cámbialo si quieres)
+--         PmenuSbar = { bg = "none" }, -- Barra de desplazamiento
+--         PmenuThumb = { bg = "none" }, -- El "pulgar" de la barra de desplazamiento
+--
+--         -- Para las descripciones flotantes de LSP (documentación de sugerencias)
+--         CmpDoc = { bg = "none" },
+--         CmpDocBorder = { bg = "none" },
+--
+--         -- Si usas Snacks.nvim para notificaciones o sugerencias
+--         SnacksNotifier = { bg = "none" },
+--         SnacksNotifierBorder = { bg = "none" },
+--
+--         -- Bordes y fondo de sugerencias de firmas de LSP
+--         LspSignatureActiveParameter = { bg = "none", bold = true, underline = true },
+--
+--         -- Render Markdown: Encabezados transparentes
+--         Conceal = { bg = "none" },
+--         RenderMarkdownH1Bg = { bg = "none" },
+--         RenderMarkdownH2Bg = { bg = "none" },
+--         RenderMarkdownH3Bg = { bg = "none" },
+--         RenderMarkdownH4Bg = { bg = "none" },
+--         RenderMarkdownH5Bg = { bg = "none" },
+--         RenderMarkdownH6Bg = { bg = "none" },
+--
+--         -- Render Markdown: Bloques de código y otros elementos
+--         RenderMarkdownCode = { bg = "none" }, -- Fondo de bloques de código
+--         RenderMarkdownCodeInline = { bg = "none" }, -- Fondo de código inline `like this`
+--         RenderMarkdownBullet = { bg = "none" },
+--         RenderMarkdownTableHead = { bg = "none" },
+--         RenderMarkdownTableRow = { bg = "none" },
+--
+--         -- Si el plugin usa los grupos estándar de Treesitter
+--         ["@markup.heading.1.markdown"] = { bg = "none" },
+--         ["@markup.heading.2.markdown"] = { bg = "none" },
+--         ["@markup.raw.block.markdown"] = { bg = "none" },
+--         -- Neovim usa ColorColumn para resaltar bloques de código a veces
+--         ColorColumn = { bg = "none" },
+--
+--         -- Grupos de Treesitter para Markdown
+--         ["@markup.raw.markdown_inline"] = { bg = "none" },
+--
+--         -- Limpiar el fondo de los delimitadores (las comillas ```)
+--         ["@markup.fenced_code_block"] = { bg = "none" },
+--
+--         Whitespace = { bg = "none" },
+--         -- Hace que la línea del cursor sea transparente
+--         CursorLine = { bg = "none" },
+--
+--         -- Si quieres que el número de la línea resalte pero el fondo no:
+--         -- CursorLineNr = { fg = "#7E9CD8", bold = true }, -- Ajusta el color a tu gusto
+--
+--         -- Para los límites de las ventanas (separadores verticales)
+--         WinSeparator = { bg = "none", fg = "#54546D" },
+--         -- Forzar transparencia en la terminal integrada
+--         Terminal = { bg = "none" },
+--         -- Si usas ToggleTerm (muy común), estos grupos son clave:
+--         ToggleTermNormal = { bg = "none" },
+--         ToggleTermNormalNC = { bg = "none" }, -- Para cuando la terminal no tiene el foco
+--         ToggleTermBorder = { bg = "none" }, -- Si usas bordes en la terminal flotante
+--         -- Grupos específicos para el panel de OpenCode
+--         OpenCodeNormal = { bg = "none" },
+--         OpenCodeBorder = { bg = "none" },
+--         OpenCodeFloating = { bg = "none" },
+--       },
+--     },
+--   },
+--
+--   -- Configure LazyVim to load gruvbox
+--   {
+--     "LazyVim/LazyVim",
+--     opts = {
+--       -- colorscheme = "kanagawa-dragon", -- kanagawa, kanagawa-wave, kanagawa-dragon, kanagawa-lotus
+--       colorscheme = "gentleman-kanagawa-blur",
+--     },
+--   },
+-- }
