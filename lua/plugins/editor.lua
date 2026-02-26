@@ -75,7 +75,7 @@ return {
     opts = {
       keymaps = {
         blame = "<Leader>gb", -- Keybinding to open blame window
-        browse = "<Leader>go", -- Keybinding to open file/folder in git repository
+        browse = "<Leader>g`", -- Keybinding to open file/folder in git repository
       },
     },
   },
