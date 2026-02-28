@@ -16,5 +16,9 @@ return {
         ["."] = false,
       },
     }
+    require("copilot").setup({
+      suggestion = { enabled = false }, -- Desactiva el ghost text automático
+      panel = { enabled = false }, -- Opcional: desactiva el panel lateral (Ctrl+Enter)
+    })
   end,
 }
