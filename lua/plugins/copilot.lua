@@ -1,24 +1,48 @@
 return {
   "zbirenbaum/copilot.lua",
-  optional = true,
-  opts = function()
-    require("copilot.api").status = require("copilot.status")
-    require("copilot.api").filetypes = {
-      filetypes = {
-        yaml = false,
-        markdown = false,
-        help = false,
-        gitcommit = false,
-        gitrebase = false,
-        hgcommit = false,
-        svn = false,
-        cvs = false,
-        ["."] = false,
-      },
-    }
-    require("copilot").setup({
-      suggestion = { enabled = false }, -- Desactiva el ghost text automático
-      panel = { enabled = false }, -- Opcional: desactiva el panel lateral (Ctrl+Enter)
-    })
-  end,
+  cmd = "Copilot",
+  event = "InsertEnter",
+  opts = {
+    suggestion = {
+      enabled = false, -- Esto desactiva el ghost text nativo
+    },
+    panel = {
+      enabled = false,
+    },
+    filetypes = {
+      yaml = false,
+      markdown = false,
+      help = false,
+      gitcommit = false,
+      gitrebase = false,
+      hgcommit = false,
+      svn = false,
+      cvs = false,
+      ["."] = false,
+    },
+  },
 }
+-- return {
+--   "zbirenbaum/copilot.lua",
+--   optional = true,
+--   opts = function()
+--     require("copilot.api").status = require("copilot.status")
+--     require("copilot.api").filetypes = {
+--       filetypes = {
+--         yaml = false,
+--         markdown = false,
+--         help = false,
+--         gitcommit = false,
+--         gitrebase = false,
+--         hgcommit = false,
+--         svn = false,
+--         cvs = false,
+--         ["."] = false,
+--       },
+--     }
+--     require("copilot").setup({
+--       suggestion = { enabled = false }, -- Desactiva el ghost text automático
+--       panel = { enabled = false }, -- Opcional: desactiva el panel lateral (Ctrl+Enter)
+--     })
+--   end,
+-- }
