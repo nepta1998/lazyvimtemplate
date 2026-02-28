@@ -5,9 +5,6 @@ return {
   },
   opts = {
     -- ... tu configuración existente
-    menu = {
-      auto_show = true, -- El menú seguirá apareciendo
-    },
     sources = {
       default = { "lsp", "path", "snippets", "buffer", "copilot" },
       providers = {
