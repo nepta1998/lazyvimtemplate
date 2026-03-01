@@ -71,14 +71,14 @@ return {
       end,
       desc = "Scroll opencode down",
     },
-    {
-      "<C-\\>",
-      function()
-        require("opencode").toggle()
-      end,
-      desc = "Toggle opencode",
-      mode = { "t" },
-    },
+    -- {
+    --   "<C-\\>",
+    --   function()
+    --     require("opencode").toggle()
+    --   end,
+    --   desc = "Toggle opencode",
+    --   mode = { "t" },
+    -- },
   },
 }
 

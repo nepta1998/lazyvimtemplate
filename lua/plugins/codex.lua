@@ -32,13 +32,13 @@ return {
       desc = "Codex: Send selection",
       mode = { "v" },
     },
-    {
-      "<C-t>",
-      function()
-        require("codex").toggle()
-      end,
-      desc = "Codex: Toggle",
-      mode = { "t" },
-    },
+    -- {
+    --   "<C-t>",
+    --   function()
+    --     require("codex").toggle()
+    --   end,
+    --   desc = "Codex: Toggle",
+    --   mode = { "t" },
+    -- },
   },
 }
