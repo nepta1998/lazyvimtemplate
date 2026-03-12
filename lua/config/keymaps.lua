@@ -12,8 +12,10 @@ vim.keymap.set("n", "<leader>gA", function()
 
   -- Buscamos los nombres de usuario después de la palabra 'account'
   local users = {}
+  local active_icon = "✅ "
   for user in result:gmatch("account%s+([%w%-%_]+)") do
-    table.insert(users, user)
+    local prefix = (#users == 0) and active_icon or ""
+    table.insert(users, prefix .. user)
   end
 
   if #users > 0 then
@@ -21,13 +23,15 @@ vim.keymap.set("n", "<leader>gA", function()
       prompt = "Seleccionar cuenta de GitHub:",
     }, function(choice)
       if choice then
-        -- Ejecutamos el cambio de cuenta usando el flag --user (-u)
+        if choice:find("^" .. active_icon) then
+          vim.notify("La cuenta ".. choice .. " ya esta activa: ", vim.log.levels.INFO, { title = "GitHub CLI" })
+          return
+        end
+        --Ejecutamos el cambio de cuenta usando el flag --user (-u)
         local cmd = "gh auth switch -u " .. choice
         os.execute(cmd)
-        
         -- Notificación visual del cambio
-        vim.notify("Cambiado a: " .. choice, vim.log.levels.INFO, { title = "GitHub CLI" })
-        
+        vim.notify("Cambiado a: " .. active_icon .. choice, vim.log.levels.INFO, { title = "GitHub CLI" })
         -- Recargamos Octo si está activo para refrescar el token
         pcall(vim.cmd, "Octo pr reload")
       end
