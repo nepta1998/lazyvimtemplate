@@ -19,3 +19,4 @@ vim.opt.pumblend = 0
 -- Spell-checking
 vim.opt.spell = true -- activa spell checker
 vim.opt.spelllang = { "en" }
+vim.opt.timeoutlen = 300 -- Da medio segundo de margen para que aparezca el menú
