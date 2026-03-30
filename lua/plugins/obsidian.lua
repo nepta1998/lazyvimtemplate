@@ -26,25 +26,41 @@ return {
       name = "snacks.pick",
     },
     -- Optional, define your own callbacks to further customize behavior.
+    -- callbacks = {
+    --   -- Runs anytime you enter the buffer for a note.
+    --   -- NOTE: Breaking change in obsidian.nvim - callback now receives only (note), not (client, note)
+    --   enter_note = function(note)
+    --     if not note then
+    --       return
+    --     end
+    --     -- Setup keymaps for obsidian notes
+    --     vim.keymap.set("n", "gf", function()
+    --       return require("obsidian").util.gf_passthrough()
+    --     end, { buffer = note.bufnr, expr = true, desc = "Obsidian follow link" })
+    --
+    --     vim.keymap.set("n", "<leader>ch", function()
+    --       return require("obsidian").util.toggle_checkbox()
+    --     end, { buffer = note.bufnr, desc = "Toggle checkbox" })
+    --
+    --     vim.keymap.set("n", "<cr>", function()
+    --       return require("obsidian").util.smart_action()
+    --     end, { buffer = note.bufnr, expr = true, desc = "Obsidian smart action" })
+    --   end,
+    -- },
     callbacks = {
-      -- Runs anytime you enter the buffer for a note.
-      -- NOTE: Breaking change in obsidian.nvim - callback now receives only (note), not (client, note)
-      enter_note = function(note)
-        if not note then
-          return
-        end
-        -- Setup keymaps for obsidian notes
+      enter_note = function(_) -- Cambiamos 'note' por '_' si no lo usas para evitar confusión
+        -- Setup keymaps for obsidian notes usando el buffer actual (0)
         vim.keymap.set("n", "gf", function()
           return require("obsidian").util.gf_passthrough()
-        end, { buffer = note.bufnr, expr = true, desc = "Obsidian follow link" })
+        end, { buffer = 0, expr = true, desc = "Obsidian follow link" })
 
         vim.keymap.set("n", "<leader>ch", function()
           return require("obsidian").util.toggle_checkbox()
-        end, { buffer = note.bufnr, desc = "Toggle checkbox" })
+        end, { buffer = 0, desc = "Toggle checkbox" })
 
         vim.keymap.set("n", "<cr>", function()
           return require("obsidian").util.smart_action()
-        end, { buffer = note.bufnr, expr = true, desc = "Obsidian smart action" })
+        end, { buffer = 0, expr = true, desc = "Obsidian smart action" })
       end,
     },
 
