@@ -5,6 +5,8 @@ return {
   opts = {
     suggestion = {
       enabled = false, -- Esto desactiva el ghost text nativo
+      auto_trigger = true,
+      keymap = { accept = false },
     },
     panel = {
       enabled = false,
