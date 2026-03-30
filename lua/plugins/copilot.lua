@@ -1,29 +1,28 @@
-return {
-  "zbirenbaum/copilot.lua",
-  cmd = "Copilot",
-  event = "InsertEnter",
-  opts = {
-    suggestion = {
-      enabled = false, -- Esto desactiva el ghost text nativo
-      auto_trigger = true,
-      keymap = { accept = false },
-    },
-    panel = {
-      enabled = false,
-    },
-    filetypes = {
-      yaml = false,
-      markdown = false,
-      help = false,
-      gitcommit = false,
-      gitrebase = false,
-      hgcommit = false,
-      svn = false,
-      cvs = false,
-      ["."] = false,
-    },
-  },
-}
+return {}
+-- return {
+--   "zbirenbaum/copilot.lua",
+--   cmd = "Copilot",
+--   event = "InsertEnter",
+--   opts = {
+--     suggestion = {
+--       enabled = false, -- Esto desactiva el ghost text nativo
+--     },
+--     panel = {
+--       enabled = false,
+--     },
+--     filetypes = {
+--       yaml = false,
+--       markdown = false,
+--       help = false,
+--       gitcommit = false,
+--       gitrebase = false,
+--       hgcommit = false,
+--       svn = false,
+--       cvs = false,
+--       ["."] = false,
+--     },
+--   },
+-- }
 -- return {
 --   "zbirenbaum/copilot.lua",
 --   optional = true,
