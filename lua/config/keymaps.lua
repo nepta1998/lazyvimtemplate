@@ -42,7 +42,7 @@ vim.keymap.set("n", "<leader>gA", function()
 end, { desc = "Switch GitHub Account" })
 
 -- Keymap para APAGAR/ENCENDER Copilot por completo
-vim.keymap.set("n", "<leader>cp", function()
+vim.keymap.set("n", "<leader>ct", function()
   local client = require("copilot.client")
   local command = require("copilot.command")
 
