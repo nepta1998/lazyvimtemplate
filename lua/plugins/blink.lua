@@ -17,10 +17,10 @@ return {
 
           -- 2. SUGERENCIA DE COPILOT: Si hay "Ghost Text" visible, aceptarlo.
           -- (Recuerda que esto solo funciona si en copilot.lua tienes suggestion = { enabled = true })
-          if require("copilot.suggestion").is_visible() then
-            require("copilot.suggestion").accept()
-            return true
-          end
+          -- if require("copilot.suggestion").is_visible() then
+          --   require("copilot.suggestion").accept()
+          --   return true
+          -- end
 
           -- 3. MENÚ DE AUTOCOMPLETADO: Si el menú está abierto, navegar al siguiente.
           if cmp.is_visible() then
