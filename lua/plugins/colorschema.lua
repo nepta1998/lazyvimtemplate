@@ -51,6 +51,17 @@ return {
           IlluminatedWordText = { bg = "none", underline = true },
           IlluminatedWordRead = { bg = "none", underline = true },
           IlluminatedWordWrite = { bg = "none", underline = true },
+          -- TRANSPARENCIA TOTAL PARA BLINK
+          -- Forzamos bg = "NONE" y blend = 0 para evitar el efecto translúcido grisáceo
+          BlinkCmpMenu = { bg = "NONE", blend = 0 },
+          BlinkCmpMenuBorder = { bg = "NONE", blend = 0 },
+          BlinkCmpDoc = { bg = "NONE", blend = 0 },
+          BlinkCmpDocBorder = { bg = "NONE", blend = 0 },
+          BlinkCmpMenuSelection = { bg = "#4D00D1", bold = true },
+
+          -- Grupos estándar que a veces blink usa como fallback
+          Pmenu = { bg = "NONE", blend = 0 },
+          NormalFloat = { bg = "NONE", blend = 0 },
         },
       },
     },
