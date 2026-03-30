@@ -4,7 +4,7 @@ return {
   opts = {
     mappings = {
       -- Al presionar Esc, se detiene la sesión del snippet y limpia las marcas
-      stop = "<Esc>",
+      stop = "<C-c>",
     },
   },
   config = function(_, opts)
