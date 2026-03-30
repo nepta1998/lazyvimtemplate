@@ -24,7 +24,7 @@ vim.keymap.set("n", "<leader>gA", function()
     }, function(choice)
       if choice then
         if choice:find("^" .. active_icon) then
-          vim.notify("La cuenta ".. choice .. " ya esta activa: ", vim.log.levels.INFO, { title = "GitHub CLI" })
+          vim.notify("La cuenta " .. choice .. " ya esta activa: ", vim.log.levels.INFO, { title = "GitHub CLI" })
           return
         end
         --Ejecutamos el cambio de cuenta usando el flag --user (-u)
@@ -40,3 +40,18 @@ vim.keymap.set("n", "<leader>gA", function()
     vim.notify("No se encontraron cuentas. Salida de gh:\n" .. result, vim.log.levels.WARN)
   end
 end, { desc = "Switch GitHub Account" })
+
+-- Keymap para APAGAR/ENCENDER Copilot por completo
+vim.keymap.set("n", "<leader>cp", function()
+  local client = require("copilot.client")
+  local command = require("copilot.command")
+
+  if client.is_disabled() then
+    command.enable()
+    vim.notify("Copilot Activado 🤖", "info", { title = "Copilot Status" })
+  else
+    command.disable()
+    -- Esto mata el proceso y detiene las sugerencias
+    vim.notify("Copilot Desactivado 🌑", "warn", { title = "Copilot Status" })
+  end
+end, { desc = " Disable/Enable Copilot AI" })
