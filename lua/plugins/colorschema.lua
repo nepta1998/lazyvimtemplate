@@ -51,6 +51,7 @@ return {
           IlluminatedWordText = { bg = "none", underline = true },
           IlluminatedWordRead = { bg = "none", underline = true },
           IlluminatedWordWrite = { bg = "none", underline = true },
+
           -- TRANSPARENCIA TOTAL PARA BLINK
           -- Forzamos bg = "NONE" y blend = 0 para evitar el efecto translúcido grisáceo
           BlinkCmpMenu = { bg = "NONE", blend = 0 },
@@ -62,6 +63,17 @@ return {
           -- Grupos estándar que a veces blink usa como fallback
           Pmenu = { bg = "NONE", blend = 0 },
           NormalFloat = { bg = "NONE", blend = 0 },
+
+          -- Tabs trnsparents
+          TabLineFill = { bg = "none" },
+          -- Estos aseguran que el resto de la barra superior sea invisible
+          TabLine = { bg = "none" },
+          TabLineSel = { bg = "none" },
+          -- Si ves una línea fina debajo de las pestañas, limpia esto:
+          WinSeparator = { bg = "none", fg = "#363646" }, -- fg es el color de la línea, bg debe ser none
+          -- Por si acaso usas el WinBar (la barra de ruta de archivo arriba del buffer)
+          WinBar = { bg = "none" },
+          WinBarNC = { bg = "none" },
         },
       },
     },
