@@ -14,8 +14,9 @@ return {
     legacy_commands = false,
     workspaces = {
       {
-        name = "NeptaNotes", -- Name of the workspace
-        path = os.getenv("HOME") .. "/.config/obsidian/NeptaNotes", -- Path to the notes directory
+        name = "Personal", -- Name of the workspace
+        -- path = os.getenv("HOME") .. "/.config/obsidian/NeptaNotes", -- Path to the notes directory
+        path = "/media/neptali/TOSHIBA EXT3/obsidian/vaults/Personal", -- Path to the notes directory
       },
     },
     completion = {
