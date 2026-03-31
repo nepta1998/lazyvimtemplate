@@ -21,3 +21,5 @@ vim.opt.spell = true -- activa spell checker
 vim.opt.spelllang = { "en" }
 vim.opt.timeoutlen = 300 -- Da medio segundo de margen para que aparezca el menú
 vim.g.lazyvim_mini_snippets_in_completion = true
+
+vim.opt.termguicolors = true
