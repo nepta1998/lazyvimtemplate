@@ -10,7 +10,7 @@ return {
   config = function()
     require("excalidraw").setup({
       -- Directorio donde se guardarán los archivos .excalidraw
-      storage_dir = "/media/neptali/TOSHIBA EXT3/obsidian/vaults/Personal/Excalidraw",
+      storage_dir = "/media/neptali/TOSHIBA EXT3/obsidian/vaults/Personal",
       open_on_create = true,
       relative_path = true,
     })
