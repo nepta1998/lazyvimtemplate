@@ -13,7 +13,6 @@ return {
       storage_dir = "/media/neptali/TOSHIBA EXT3/obsidian/vaults/Personal/Excalidraw",
       open_on_create = true,
       relative_path = true,
-      extension = "excalidraw.md",
     })
   end,
 }
