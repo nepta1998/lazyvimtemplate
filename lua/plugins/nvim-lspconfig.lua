@@ -50,6 +50,17 @@ return {
             },
           },
         },
+        clangd = {
+          capabilities = {
+            offsetEncoding = { "utf-16" },
+          },
+          cmd = {
+            "clangd",
+            "--background-index",
+            "--header-insertion=never",
+            "--query-driver=/usr/bin/g++-14,/usr/bin/g++,/usr/bin/gcc-14,/usr/bin/gcc",
+          },
+        },
       },
     },
   },
