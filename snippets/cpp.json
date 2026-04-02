@@ -3,12 +3,7 @@
     "prefix": "cpg",
     "description": "Plantilla base para algoritmos en C++",
     "body": [
-      "#include <iostream>",
-      "#include <vector>",
-      "#include <algorithm>",
-      "#ifdef ONLINE_JUDGE",
       "#include <bits/stdc++.h>",
-      "#endif",
       "",
       "using namespace std;",
       "",
