@@ -1,0 +1,26 @@
+{
+  "Algorithm Start": {
+    "prefix": "cpg",
+    "description": "Plantilla base para algoritmos en Rust",
+    "body": [
+      "use std::io::{self, BufRead, Write};",
+      "",
+      "fn solve() -> io::Result<()> {",
+      "    let stdin = io::stdin();",
+      "    let mut reader = stdin.lock().lines();",
+      "    let stdout = io::stdout();",
+      "    let mut writer = io::BufWriter::new(stdout.lock());",
+      "",
+      "    if let Some(Ok(line)) = reader.next() {",
+      "        ${0:// Lógica}",
+      "    }",
+      "    writer.flush()?",
+      "    Ok(())",
+      "}",
+      "",
+      "fn main() {",
+      "    solve().unwrap();",
+      "}"
+    ]
+  }
+}

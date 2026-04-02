@@ -1,0 +1,26 @@
+{
+  "Algorithm Start Zig": {
+    "prefix": "cpg",
+    "description": "Plantilla base para algoritmos en Zig",
+    "body": [
+      "const std = @import(\"std\");",
+      "",
+      "pub fn main() !void {",
+      "    const stdin = std.io.getStdIn().reader();",
+      "    const stdout = std.io.getStdOut().writer();",
+      "    var bw = std.io.bufferedWriter(stdout);",
+      "    const writer = bw.writer();",
+      "",
+      "    var gpa = std.heap.GeneralPurposeAllocator(.{}){};",
+      "    defer _ = gpa.deinit();",
+      "    const allocator = gpa.allocator();",
+      "",
+      "    var buf: [1024]u8 = undefined;",
+      "    if (try stdin.readUntilDelimiterOrEof(&buf, '\\n')) |line| {",
+      "        ${0:// Lógica}",
+      "    }",
+      "    try bw.flush();",
+      "}"
+    ]
+  }
+}

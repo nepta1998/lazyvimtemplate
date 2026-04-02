@@ -1,6 +1,7 @@
 {
   "cp_template": {
     "prefix": "cpg",
+    "description": "Plantilla base para algoritmos en C++",
     "body": [
       "#include <iostream>",
       "#include <vector>",
