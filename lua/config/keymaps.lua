@@ -41,17 +41,23 @@ vim.keymap.set("n", "<leader>gA", function()
   end
 end, { desc = "Switch GitHub Account" })
 
--- Keymap para APAGAR/ENCENDER Copilot por completo
 vim.keymap.set("n", "<leader>ct", function()
-  local client = require("copilot.client")
-  local command = require("copilot.command")
+  -- Lógica para Copilot
+  local cp_client = require("copilot.client")
+  local cp_command = require("copilot.command")
 
-  if client.is_disabled() then
-    command.enable()
-    vim.notify("Copilot Activado 🤖", "info", { title = "Copilot Status" })
+  -- Lógica para Supermaven
+  local sm_api = require("supermaven-nvim.api")
+
+  if cp_client.is_disabled() then
+    -- ACTIVAR AMBOS
+    cp_command.enable()
+    sm_api.start() -- Inicia el binario de Supermaven
+    vim.notify("IA Activada: Copilot 🤖 & Supermaven ⚡", "info", { title = "AI Status" })
   else
-    command.disable()
-    -- Esto mata el proceso y detiene las sugerencias
-    vim.notify("Copilot Desactivado 🌑", "warn", { title = "Copilot Status" })
+    -- DESACTIVAR AMBOS
+    cp_command.disable()
+    sm_api.stop() -- Detiene el proceso de Supermaven por completo
+    vim.notify("IA Desactivada: Copilot 🌑 & Supermaven ❄️", "warn", { title = "AI Status" })
   end
-end, { desc = " Disable/Enable Copilot AI" })
+end, { desc = "Toggle Copilot and Supermaven AI" })
