@@ -20,8 +20,6 @@
       "int main() {",
       "\tios_base::sync_with_stdio(false);",
       "\tcin.tie(NULL);",
-      "\tint t = 1;",
-      "\tcin >> t;",
       "\tsolve();",
       "\treturn 0;",
       "}"
