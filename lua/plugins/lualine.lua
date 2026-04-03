@@ -3,9 +3,9 @@ return {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
       opts.options.component_separators = { left = "", right = "" }
-      opts.options.section_separators = { left = "", right = "" }
+      -- Redondos:  y   Triangulares:  y   Inclinados:  y  Llamas/Pixel:  y 
+      opts.options.section_separators = { left = " ", right = " " }
 
-      -- 3. Insertamos tu componente de Supermaven (el rayo)
       table.insert(opts.sections.lualine_x, 1, {
         function()
           local ok, api = pcall(require, "supermaven-nvim.api")
