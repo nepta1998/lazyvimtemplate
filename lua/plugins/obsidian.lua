@@ -11,6 +11,7 @@ return {
     "nvim-lua/plenary.nvim",
   },
   opts = {
+    ui = { enable = false },
     legacy_commands = false,
     workspaces = {
       {
@@ -49,19 +50,23 @@ return {
     --   end,
     -- },
     callbacks = {
-      enter_note = function(_) -- Cambiamos 'note' por '_' si no lo usas para evitar confusión
-        -- Setup keymaps for obsidian notes usando el buffer actual (0)
+      -- El plugin ahora solo pasa un argumento: 'note'
+      enter_note = function(note)
+        -- Usamos note.bufnr para asegurarnos de que los mapeos
+        -- solo se apliquen a ESTA nota de Obsidian
+        local bufnr = note.bufnr
+
         vim.keymap.set("n", "gf", function()
           return require("obsidian").util.gf_passthrough()
-        end, { buffer = 0, expr = true, desc = "Obsidian follow link" })
+        end, { buffer = bufnr, expr = true, desc = "Obsidian follow link" })
 
         vim.keymap.set("n", "<leader>ch", function()
           return require("obsidian").util.toggle_checkbox()
-        end, { buffer = 0, desc = "Toggle checkbox" })
+        end, { buffer = bufnr, desc = "Toggle checkbox" })
 
         vim.keymap.set("n", "<cr>", function()
           return require("obsidian").util.smart_action()
-        end, { buffer = 0, expr = true, desc = "Obsidian smart action" })
+        end, { buffer = bufnr, expr = true, desc = "Obsidian smart action" })
       end,
     },
 
