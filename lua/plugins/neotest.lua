@@ -8,6 +8,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     keys = {
+      { "<leader>t", false },
       { "<leader>ta", false },
       { "<leader>tt", false },
       { "<leader>tT", false },
