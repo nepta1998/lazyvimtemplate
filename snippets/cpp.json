@@ -22,9 +22,7 @@
       "\tcin.tie(NULL);",
       "\tint t = 1;",
       "\tcin >> t;",
-      "\twhile(t--) {",
-      "\t\tsolve();",
-      "\t}",
+      "\tsolve();",
       "\treturn 0;",
       "}"
     ]
