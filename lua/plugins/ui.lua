@@ -214,7 +214,16 @@ return {
     },
     opts = {
       notifier = {},
-      image = {},
+      image = {
+        enabled = true, -- Activa el visor de imágenes
+        -- Opciones adicionales (opcionales)
+        doc = {
+          -- inline = false, -- Renderiza las imágenes directamente en el buffer
+          -- float = true, -- Si prefieres que aparezcan en una ventana flotante
+          -- max_width = 60,
+          -- max_height = 30,
+        },
+      },
       picker = {
         exclude = {
           ".git",

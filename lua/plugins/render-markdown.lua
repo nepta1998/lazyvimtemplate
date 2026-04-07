@@ -26,6 +26,7 @@ return {
       width = "block",
       left_pad = 0, -- Prueba bajando esto a 0 si ves la franja opaca
     },
+    render_modes = { "n", "c", "i", "v" },
     padding = {
       highlight = "Normal", -- Como ya pusimos Normal = {bg="none"}, esto debería funcionar
     },
