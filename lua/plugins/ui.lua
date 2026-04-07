@@ -216,6 +216,7 @@ return {
       notifier = {},
       image = {
         enabled = true, -- Activa el visor de imágenes
+        -- force_magick = true,
         -- Opciones adicionales (opcionales)
         doc = {
           -- inline = false, -- Renderiza las imágenes directamente en el buffer
