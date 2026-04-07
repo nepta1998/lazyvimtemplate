@@ -20,6 +20,9 @@ return {
         path = "/media/neptali/TOSHIBA EXT3/obsidian/vaults/Personal", -- Path to the notes directory
       },
     },
+    -- attachments = {
+    --   folder = "Algoritmosproblemas/hackerrank/attachments", -- O el nombre que uses en tu Vault
+    -- },
     completion = {
       cmp = true,
     },
