@@ -12,7 +12,7 @@ return {
 
     -- 2. Definimos las fuentes (limpiando las problemáticas)
     local sources = {
-      null_ls.builtins.diagnostics.trivy,
+      nls.builtins.diagnostics.trivy,
       require("none-ls.diagnostics.flake8"),
       nls.builtins.formatting.black,
       nls.builtins.formatting.isort,
