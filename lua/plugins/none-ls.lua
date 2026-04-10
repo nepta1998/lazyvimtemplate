@@ -1,4 +1,3 @@
-
 return {
   "nvimtools/none-ls.nvim",
   dependencies = {
@@ -6,13 +5,14 @@ return {
   },
   opts = function(_, opts)
     local nls = require("null-ls")
-    
+
     -- 1. Aseguramos el root_dir
     opts.root_dir = opts.root_dir
       or require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git")
 
     -- 2. Definimos las fuentes (limpiando las problemáticas)
     local sources = {
+      null_ls.builtins.diagnostics.trivy,
       require("none-ls.diagnostics.flake8"),
       nls.builtins.formatting.black,
       nls.builtins.formatting.isort,
@@ -30,4 +30,3 @@ return {
     end, opts.sources)
   end,
 }
-
