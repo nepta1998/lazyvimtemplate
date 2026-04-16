@@ -1,11 +1,13 @@
 return {
   "obsidian-nvim/obsidian.nvim",
+  -- Solo se activa si NO detecta que estás en WSL
+  enabled = function()
+    -- Se desactiva si detecta WSL O si la variable global disable_obsidian es true
+    local is_wsl = vim.fn.has("wsl") == 1
+    return not is_wsl and not vim.g.disable_obsidian
+  end,
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = false,
-  enabled = function()
-    -- Disable Obsidian when running from Oil Simple (to avoid path issues in Zed context)
-    return not vim.g.disable_obsidian
-  end,
   dependencies = {
     -- Required.
     "nvim-lua/plenary.nvim",
