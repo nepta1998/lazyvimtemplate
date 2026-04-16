@@ -23,3 +23,22 @@ vim.opt.timeoutlen = 300 -- Da medio segundo de margen para que aparezca el men√
 vim.g.lazyvim_mini_snippets_in_completion = true
 
 vim.opt.termguicolors = true
+
+-- Configuraci√≥n del portapapeles para WSL en LazyVim
+if vim.fn.has("wsl") == 1 then
+  vim.g.clipboard = {
+    name = "WslClipboard",
+    copy = {
+      ["+"] = "clip.exe",
+      ["*"] = "clip.exe",
+    },
+    paste = {
+      ["+"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ["*"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+  }
+end
+
+-- Esto permite que Neovim use siempre el portapapeles del sistema
+vim.opt.clipboard = "unnamedplus"
