@@ -100,7 +100,13 @@ return {
     opts = {
       -- Configuraciones de adaptadores aquí
       adapters = {
-        -- require("neotest-jest")({ ... }),
+        ["neotest-python"] = {
+          -- Aquí extendemos la lógica de detección
+          is_test_file = function(file_path)
+            -- Retorna true si termina en tests.py o sigue el patrón estándar
+            return file_path:match("tests%.py$") or file_path:match("test_.*%.py$")
+          end,
+        },
       },
     },
   },
