@@ -61,6 +61,33 @@ return {
             "--query-driver=/usr/bin/g++-14,/usr/bin/g++,/usr/bin/gcc-14,/usr/bin/gcc",
           },
         },
+        rust_analyzer = {
+          settings = {
+            ["rust-analyzer"] = {
+              -- Reduce drásticamente el uso de RAM (límite de memoria en caché)
+              lru = {
+                capacity = 32,
+              },
+              -- Evita picos del 100% de CPU al abrir Neovim
+              cachePriming = {
+                enable = false,
+              },
+              -- Optimiza el chequeo en segundo plano
+              check = {
+                command = "clippy",
+                -- CRÍTICO PARA TAURI: Usa una carpeta target dedicada para el LSP.
+                -- Evita que Neovim y 'tauri dev' compitan por el mismo candado de Cargo.
+                extraArgs = { "--target-dir", "target/rust-analyzer" },
+              },
+              -- Desactiva análisis experimentales costosos
+              diagnostics = {
+                experimental = {
+                  needlessCruft = false,
+                },
+              },
+            },
+          },
+        },
       },
     },
   },
