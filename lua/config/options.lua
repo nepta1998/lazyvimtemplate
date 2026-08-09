@@ -16,7 +16,7 @@ else
   -- Configuración para Windows nativo
   -- vim.g.python3_host_prog = "C:/Users/TuUsuario/miniconda3/python.exe"
 
-  vim.g.python3_host_prog = "/home/neptali/miniconda3/bin/python3" -- set default python env
+  -- vim.g.python3_host_prog = "/home/neptali/miniconda3/bin/python3" -- set default python env
 end
 
 vim.g.loaded_perl_provider = 0 -- fix warning to  load perl
