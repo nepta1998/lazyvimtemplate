@@ -23,7 +23,7 @@ vim.g.loaded_perl_provider = 0 -- fix warning to  load perl
 vim.g.loaded_ruby_provider = 0 -- fix warning to  load ruby
 vim.g.lazyvim_python_lsp = "basedpyright"
 -- vim.g.loaded_node_provider = 0
-vim.g.autoformat = true
+vim.g.autoformat = false
 if vim.fn.executable("zsh") == 1 then
   vim.opt.shell = "zsh"
 else

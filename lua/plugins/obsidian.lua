@@ -1,86 +1,87 @@
-return {
-  "obsidian-nvim/obsidian.nvim",
-  -- Solo se activa si NO detecta que estás en WSL
-  enabled = function()
-    -- Se desactiva si detecta WSL O si la variable global disable_obsidian es true
-    local is_wsl = vim.fn.has("wsl") == 1
-    return not is_wsl and not vim.g.disable_obsidian
-  end,
-  version = "*", -- recommended, use latest release instead of latest commit
-  lazy = false,
-  dependencies = {
-    -- Required.
-    "nvim-lua/plenary.nvim",
-  },
-  opts = {
-    ui = { enable = false },
-    legacy_commands = false,
-    workspaces = {
-      {
-        name = "Personal", -- Name of the workspace
-        -- path = os.getenv("HOME") .. "/.config/obsidian/NeptaNotes", -- Path to the notes directory
-        path = "/media/neptali/TOSHIBA EXT3/obsidian/vaults/Personal", -- Path to the notes directory
-      },
-    },
-    attachments = {
-      folder = "attachments",
-    },
-    completion = {
-      cmp = true,
-    },
-    picker = {
-      -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', 'mini.pick' or 'snacks.pick'.
-      name = "snacks.pick",
-    },
-    -- Optional, define your own callbacks to further customize behavior.
-    -- callbacks = {
-    --   -- Runs anytime you enter the buffer for a note.
-    --   -- NOTE: Breaking change in obsidian.nvim - callback now receives only (note), not (client, note)
-    --   enter_note = function(note)
-    --     if not note then
-    --       return
-    --     end
-    --     -- Setup keymaps for obsidian notes
-    --     vim.keymap.set("n", "gf", function()
-    --       return require("obsidian").util.gf_passthrough()
-    --     end, { buffer = note.bufnr, expr = true, desc = "Obsidian follow link" })
-    --
-    --     vim.keymap.set("n", "<leader>ch", function()
-    --       return require("obsidian").util.toggle_checkbox()
-    --     end, { buffer = note.bufnr, desc = "Toggle checkbox" })
-    --
-    --     vim.keymap.set("n", "<cr>", function()
-    --       return require("obsidian").util.smart_action()
-    --     end, { buffer = note.bufnr, expr = true, desc = "Obsidian smart action" })
-    --   end,
-    -- },
-    callbacks = {
-      -- El plugin ahora solo pasa un argumento: 'note'
-      enter_note = function(note)
-        -- Usamos note.bufnr para asegurarnos de que los mapeos
-        -- solo se apliquen a ESTA nota de Obsidian
-        local bufnr = note.bufnr
-
-        vim.keymap.set("n", "gf", function()
-          return require("obsidian").util.gf_passthrough()
-        end, { buffer = bufnr, expr = true, desc = "Obsidian follow link" })
-
-        vim.keymap.set("n", "<leader>ch", function()
-          return require("obsidian").util.toggle_checkbox()
-        end, { buffer = bufnr, desc = "Toggle checkbox" })
-
-        vim.keymap.set("n", "<cr>", function()
-          return require("obsidian").util.smart_action()
-        end, { buffer = bufnr, expr = true, desc = "Obsidian smart action" })
-      end,
-    },
-
-    -- Settings for templates
-    templates = {
-      subdir = "templates", -- Subdirectory for templates
-      date_format = "%Y-%m-%d-%a", -- Date format for templates
-      gtime_format = "%H:%M", -- Time format for templates
-      tags = "", -- Default tags for templates
-    },
-  },
-}
+return {}
+-- return {
+--   "obsidian-nvim/obsidian.nvim",
+--   -- Solo se activa si NO detecta que estás en WSL
+--   enabled = function()
+--     -- Se desactiva si detecta WSL O si la variable global disable_obsidian es true
+--     local is_wsl = vim.fn.has("wsl") == 1
+--     return not is_wsl and not vim.g.disable_obsidian
+--   end,
+--   version = "*", -- recommended, use latest release instead of latest commit
+--   lazy = false,
+--   dependencies = {
+--     -- Required.
+--     "nvim-lua/plenary.nvim",
+--   },
+--   opts = {
+--     ui = { enable = false },
+--     legacy_commands = false,
+--     workspaces = {
+--       {
+--         name = "Personal", -- Name of the workspace
+--         -- path = os.getenv("HOME") .. "/.config/obsidian/NeptaNotes", -- Path to the notes directory
+--         path = "/media/neptali/TOSHIBA EXT3/obsidian/vaults/Personal", -- Path to the notes directory
+--       },
+--     },
+--     attachments = {
+--       folder = "attachments",
+--     },
+--     completion = {
+--       cmp = true,
+--     },
+--     picker = {
+--       -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', 'mini.pick' or 'snacks.pick'.
+--       name = "snacks.pick",
+--     },
+--     -- Optional, define your own callbacks to further customize behavior.
+--     -- callbacks = {
+--     --   -- Runs anytime you enter the buffer for a note.
+--     --   -- NOTE: Breaking change in obsidian.nvim - callback now receives only (note), not (client, note)
+--     --   enter_note = function(note)
+--     --     if not note then
+--     --       return
+--     --     end
+--     --     -- Setup keymaps for obsidian notes
+--     --     vim.keymap.set("n", "gf", function()
+--     --       return require("obsidian").util.gf_passthrough()
+--     --     end, { buffer = note.bufnr, expr = true, desc = "Obsidian follow link" })
+--     --
+--     --     vim.keymap.set("n", "<leader>ch", function()
+--     --       return require("obsidian").util.toggle_checkbox()
+--     --     end, { buffer = note.bufnr, desc = "Toggle checkbox" })
+--     --
+--     --     vim.keymap.set("n", "<cr>", function()
+--     --       return require("obsidian").util.smart_action()
+--     --     end, { buffer = note.bufnr, expr = true, desc = "Obsidian smart action" })
+--     --   end,
+--     -- },
+--     callbacks = {
+--       -- El plugin ahora solo pasa un argumento: 'note'
+--       enter_note = function(note)
+--         -- Usamos note.bufnr para asegurarnos de que los mapeos
+--         -- solo se apliquen a ESTA nota de Obsidian
+--         local bufnr = note.bufnr
+--
+--         vim.keymap.set("n", "gf", function()
+--           return require("obsidian").util.gf_passthrough()
+--         end, { buffer = bufnr, expr = true, desc = "Obsidian follow link" })
+--
+--         vim.keymap.set("n", "<leader>ch", function()
+--           return require("obsidian").util.toggle_checkbox()
+--         end, { buffer = bufnr, desc = "Toggle checkbox" })
+--
+--         vim.keymap.set("n", "<cr>", function()
+--           return require("obsidian").util.smart_action()
+--         end, { buffer = bufnr, expr = true, desc = "Obsidian smart action" })
+--       end,
+--     },
+--
+--     -- Settings for templates
+--     templates = {
+--       subdir = "templates", -- Subdirectory for templates
+--       date_format = "%Y-%m-%d-%a", -- Date format for templates
+--       gtime_format = "%H:%M", -- Time format for templates
+--       tags = "", -- Default tags for templates
+--     },
+--   },
+-- }
