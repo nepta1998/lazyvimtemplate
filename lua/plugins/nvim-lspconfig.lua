@@ -36,6 +36,13 @@ return {
           },
         },
         gopls = {
+          -- gopls only resolves a package guarded by //go:build if it receives the
+          -- tag. In InitializeParams it must be the FLAT settings object: the
+          -- { gopls = ... } wrapper is not accepted there, and
+          -- workspace/didChangeConfiguration does not apply buildFlags at all.
+          init_options = {
+            buildFlags = { "-tags=e2e" },
+          },
           settings = {
             gopls = {
               hints = {
