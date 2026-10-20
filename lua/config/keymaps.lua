@@ -64,7 +64,7 @@ end, { desc = "Toggle Copilot and Supermaven AI" })
 
 -- Trivy: escanea vulnerabilidades, secretos y misconfigs y los manda al quickfix
 -- Requiere trivy (instalado via mason: mason/bin ya esta en el PATH de Neovim)
-vim.keymap.set("n", "<leader>vT", function()
+vim.keymap.set("n", "<leader>cv", function()
   local out = vim.fn.tempname() .. ".json"
   local cmd = {
     "trivy", "fs", ".",
