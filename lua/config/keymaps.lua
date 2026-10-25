@@ -71,11 +71,11 @@ local trivy = {}
 
 -- Dependencias, builds y caches: nunca son codigo propio. Trivy NO respeta
 -- .gitignore, asi que sin esto el reporte se llena de ruido de terceros.
+-- `.git` y `node_modules` no van aca: trivy ya los skipea por default en el
+-- walker (verificado con vuln, secret y misconfig). Declararlos no cambia nada.
 trivy.skip_dirs = {
-  ".git",
   ".hg",
   ".svn",
-  "node_modules",
   "bower_components",
   "vendor",
   "dist",
@@ -180,8 +180,10 @@ function trivy.scan(opts)
   if opts.ignore_unfixed then
     table.insert(cmd, "--ignore-unfixed")
   end
+  -- `--skip-dirs` matchea contra el path relativo al root del scan: un nombre
+  -- pelado solo filtra en la raiz. `**/` cubre raiz y cualquier profundidad.
   for _, dir in ipairs(trivy.skip_dirs) do
-    vim.list_extend(cmd, { "--skip-dirs", dir })
+    vim.list_extend(cmd, { "--skip-dirs", "**/" .. dir })
   end
 
   vim.notify(
