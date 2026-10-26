@@ -65,22 +65,22 @@ elseif vim.env.WAYLAND_DISPLAY then
     if vim.fn.executable("xclip") == 1 then
       return primary and { "xclip", "-selection", "primary", "-o" } or { "xclip", "-selection", "clipboard", "-o" }
     end
-    -- Respaldo nativo de Neovim mediante OSC 52 si no hay lectores CLI instalados
-    return function() return require("vim.ui.clipboard.osc52").paste(primary and "*" or "+")() end
   end
-
-  local osc52 = require("vim.ui.clipboard.osc52")
-  vim.g.clipboard = {
-    name = "osc52+reader",
-    copy = {
-      ["+"] = osc52.copy("+"),
-      ["*"] = osc52.copy("*"),
-    },
-    paste = {
-      ["+"] = reader(false),
-      ["*"] = reader(true),
-    },
-  }
+  local clipboard, primary = reader(false), reader(true)
+  if clipboard and primary then
+    local osc52 = require("vim.ui.clipboard.osc52")
+    vim.g.clipboard = {
+      name = "osc52+reader",
+      copy = {
+        ["+"] = osc52.copy("+"),
+        ["*"] = osc52.copy("*"),
+      },
+      paste = {
+        ["+"] = clipboard,
+        ["*"] = primary,
+      },
+    }
+  end
 end
 
 -- Esto permite que Neovim use siempre el portapapeles del sistema
