@@ -53,6 +53,34 @@ if is_wsl then
     },
     cache_enabled = 0,
   }
+elseif vim.env.WAYLAND_DISPLAY then
+  -- Wayland: copiar por OSC 52 mantiene el dato dentro del terminal, así que no
+  -- se crea ninguna superficie; wl-copy en cambio necesita robar el foco un
+  -- instante en Mutter y eso hace parpadear el dock (bugaevc/wl-clipboard#90).
+  -- Pegar usa el lector Wayland si está, y si no xclip sobre XWayland.
+  local function reader(primary)
+    if vim.fn.executable("wl-paste") == 1 then
+      return primary and { "wl-paste", "--no-newline", "--primary" } or { "wl-paste", "--no-newline" }
+    end
+    if vim.fn.executable("xclip") == 1 then
+      return primary and { "xclip", "-selection", "primary", "-o" } or { "xclip", "-selection", "clipboard", "-o" }
+    end
+  end
+  local clipboard, primary = reader(false), reader(true)
+  if clipboard and primary then
+    local osc52 = require("vim.ui.clipboard.osc52")
+    vim.g.clipboard = {
+      name = "osc52+reader",
+      copy = {
+        ["+"] = osc52.copy("+"),
+        ["*"] = osc52.copy("*"),
+      },
+      paste = {
+        ["+"] = clipboard,
+        ["*"] = primary,
+      },
+    }
+  end
 end
 
 -- Esto permite que Neovim use siempre el portapapeles del sistema
