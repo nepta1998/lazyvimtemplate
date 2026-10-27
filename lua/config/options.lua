@@ -57,25 +57,24 @@ elseif vim.env.WAYLAND_DISPLAY then
   -- Wayland: copiar por OSC 52 mantiene el dato dentro del terminal, así que no
   -- se crea ninguna superficie; wl-copy en cambio necesita robar el foco un
   -- instante en Mutter y eso hace parpadear el dock (bugaevc/wl-clipboard#90).
-  -- Pegar usa el lector Wayland si está, y si no xclip sobre XWayland.
+  -- Pegar usa xclip sobre XWayland: wl-clipboard queda descartado a propósito
+  -- porque en este equipo provoca ese mismo flash, incluso para leer.
   local function reader(primary)
+    if vim.fn.executable("xclip") ~= 1 then
+      return nil
+    end
     local selection = primary and "primary" or "clipboard"
-    if vim.fn.executable("wl-paste") == 1 then
-      return primary and { "wl-paste", "--no-newline", "--primary" } or { "wl-paste", "--no-newline" }
-    end
-    if vim.fn.executable("xclip") == 1 then
-      -- Bajo Wayland el dueño del portapapeles llega por el puente XWayland, que
-      -- no siempre expone el target STRING que xclip pide por defecto; entonces
-      -- xclip sale con "Error: target STRING not available" y Neovim lo muestra
-      -- como "clipboard: error: ...". Pedimos los targets de texto explícitos y
-      -- degradamos a pegado vacío en silencio en vez de romper la sesión.
-      local candidates = {
-        ("xclip -selection %s -o -t UTF8_STRING 2>/dev/null"):format(selection),
-        ("xclip -selection %s -o -t text/plain 2>/dev/null"):format(selection),
-        "true",
-      }
-      return { "sh", "-c", table.concat(candidates, " || ") }
-    end
+    -- Bajo Wayland el dueño del portapapeles llega por el puente XWayland, que
+    -- no siempre expone el target STRING que xclip pide por defecto; entonces
+    -- xclip sale con "Error: target STRING not available" y Neovim lo muestra
+    -- como "clipboard: error: ...". Pedimos los targets de texto explícitos y
+    -- degradamos a pegado vacío en silencio en vez de romper la sesión.
+    local candidates = {
+      ("xclip -selection %s -o -t UTF8_STRING 2>/dev/null"):format(selection),
+      ("xclip -selection %s -o -t text/plain 2>/dev/null"):format(selection),
+      "true",
+    }
+    return { "sh", "-c", table.concat(candidates, " || ") }
   end
   local clipboard, primary = reader(false), reader(true)
   if clipboard and primary then
