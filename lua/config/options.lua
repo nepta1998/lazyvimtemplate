@@ -59,11 +59,22 @@ elseif vim.env.WAYLAND_DISPLAY then
   -- instante en Mutter y eso hace parpadear el dock (bugaevc/wl-clipboard#90).
   -- Pegar usa el lector Wayland si está, y si no xclip sobre XWayland.
   local function reader(primary)
+    local selection = primary and "primary" or "clipboard"
     if vim.fn.executable("wl-paste") == 1 then
       return primary and { "wl-paste", "--no-newline", "--primary" } or { "wl-paste", "--no-newline" }
     end
     if vim.fn.executable("xclip") == 1 then
-      return primary and { "xclip", "-selection", "primary", "-o" } or { "xclip", "-selection", "clipboard", "-o" }
+      -- Bajo Wayland el dueño del portapapeles llega por el puente XWayland, que
+      -- no siempre expone el target STRING que xclip pide por defecto; entonces
+      -- xclip sale con "Error: target STRING not available" y Neovim lo muestra
+      -- como "clipboard: error: ...". Pedimos los targets de texto explícitos y
+      -- degradamos a pegado vacío en silencio en vez de romper la sesión.
+      local candidates = {
+        ("xclip -selection %s -o -t UTF8_STRING 2>/dev/null"):format(selection),
+        ("xclip -selection %s -o -t text/plain 2>/dev/null"):format(selection),
+        "true",
+      }
+      return { "sh", "-c", table.concat(candidates, " || ") }
     end
   end
   local clipboard, primary = reader(false), reader(true)
@@ -79,6 +90,7 @@ elseif vim.env.WAYLAND_DISPLAY then
         ["+"] = clipboard,
         ["*"] = primary,
       },
+      cache_enabled = 0,
     }
   end
 end
