@@ -80,8 +80,14 @@ return {
         return
       end
 
-      -- tmux / ghostty / kitty: el pane corre el browser como proceso propio,
-      -- así que tmux o el emulador lo cierran solos cuando el browser sale.
+      -- tmux / kitty / wezterm: el pane corre el browser como proceso propio,
+      -- así que el multiplexor o el emulador lo cierran solos cuando el browser
+      -- sale.
+      --
+      -- Ojo: en Linux el adaptador de ghostty de terminal-browser no soporta
+      -- splits (usa AppleScript, es solo macOS) y falla con "ghostty cannot
+      -- open panes from a command". Ahí hay que correr nvim dentro de tmux,
+      -- herdr o kitty.
       vim.fn.jobstart({ "terminal-browser", "open", url, "--split", "right" }, { detach = true })
     end
 
