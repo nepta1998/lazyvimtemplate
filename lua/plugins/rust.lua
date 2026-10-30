@@ -77,13 +77,13 @@ return {
   -- Si preferís dejar los hints del lado del cliente: LazyVim los prende para
   -- todos los filetypes y los pide por rango visible. Excluir rust acá evita
   -- las requests; el bloque `inlayHints` de arriba las haría vacías igual.
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      inlay_hints = {
-        enabled = true,
-        exclude = { "vue", "rust" },
-      },
-    },
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     inlay_hints = {
+  --       enabled = true,
+  --       exclude = { "vue", "rust" },
+  --     },
+  --   },
+  -- },
 }
