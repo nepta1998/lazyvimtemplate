@@ -57,8 +57,8 @@ return {
             },
 
             inlayHints = INLAY_HINTS and {} or {
-              typeHints = { enable = false },
-              parameterHints = { enable = false },
+              typeHints = { enable = true },
+              parameterHints = { enable = true },
               chainingHints = { enable = false },
               closingBraceHints = { enable = false },
               bindingModeHints = { enable = false },
