@@ -248,7 +248,7 @@ function trivy.scan(opts)
   end)
 end
 
-vim.keymap.set("n", "<leader>cv", function()
+vim.keymap.set("n", "<leader>c/", function()
   local root = trivy.project_root()
   trivy.scan({
     target = root,
@@ -261,7 +261,7 @@ vim.keymap.set("n", "<leader>cv", function()
   })
 end, { desc = "Trivy: escanear proyecto -> quickfix" })
 
-vim.keymap.set("n", "<leader>cV", function()
+vim.keymap.set("n", "<leader>c\\", function()
   local file = vim.api.nvim_buf_get_name(0)
   if file == "" then
     vim.notify("El buffer actual no es un archivo", vim.log.levels.WARN, { title = "Trivy" })
