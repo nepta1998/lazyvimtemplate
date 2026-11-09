@@ -22,8 +22,6 @@ return {
             "arduino-language-server",
             "-cli-config",
             vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
-            "-fqbn",
-            "arduino:avr:uno",
           },
         },
       },
