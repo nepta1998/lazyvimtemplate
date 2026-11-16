@@ -29,12 +29,15 @@ return {
     end,
   },
 
-  -- 2. Conexión obligatoria del LSP (clangd) en LazyVim
+  -- 2. Conexión segura del LSP (clangd)
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
-      opts.servers = opts.servers or {}
-      opts.servers.clangd = require("esp32").lsp_config()
+      local ok, esp32 = pcall(require, "esp32")
+      if ok then
+        opts.servers = opts.servers or {}
+        opts.servers.clangd = esp32.lsp_config()
+      end
     end,
   },
 
