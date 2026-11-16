@@ -29,6 +29,7 @@ return {
         { "<leader>4", group = "Test", icon = "🧪" },
         { "<leader>5", group = "arduino", icon = " ", mode = { "n" } },
         { "<leader>6", group = "ESP32", icon = " ", mode = { "n" } },
+        { "<leader>R", group = "Rest", icon = "🌐", mode = { "n" } },
       })
     end,
   },
